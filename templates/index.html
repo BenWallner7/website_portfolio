@@ -2,4 +2,9 @@
 {% block content %}
     <h2>Welcome!</h2>
     <p>Hi, I’m Ben, a data professional with experience in the Biotech and Insuretech industries. This is my profile site.</p>
+
+    <!-- Profile Image -->
+    <img src="{{ url_for('static', filename='images/profile.jpeg') }}" 
+        alt="Profile Picture" 
+        class="profile-img">
 {% endblock %}
