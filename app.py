@@ -1,4 +1,5 @@
-from flask import Flask, render_template, Markup
+from flask import Flask, render_template
+from markupsafe import Markup
 import plotly.express as px
 import plotly
 import json
