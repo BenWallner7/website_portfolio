@@ -4,15 +4,15 @@
 <div class="grid">
     {% for g in plots %}
     <div class="chart" id="chart{{ loop.index }}"></div>
-    <script>
-        var graph = {{ g|safe }};
-        Plotly.newPlot('chart{{ loop.index }}', graph.data, graph.layout);
-    </script>
     {% endfor %}
 </div>
 
-<!-- Plotly.js -->
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    {% for g in plots %}
+        var graph = {{ g|safe }};
+        Plotly.newPlot('chart{{ loop.index }}', graph.data, graph.layout);
+    {% endfor %}
+</script>
 
 <style>
     .grid {
