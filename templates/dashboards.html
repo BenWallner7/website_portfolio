@@ -1,29 +1,18 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Dashboards</h2>
-<div class="grid">
-    {% for g in plots %}
-    <div class="chart" id="chart{{ loop.index }}"></div>
-    {% endfor %}
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboards</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>My Dashboards</h1>
 
-<script>
-    {% for g in plots %}
-        var graph = {{ g|safe }};
-        Plotly.newPlot('chart{{ loop.index }}', graph.data, graph.layout);
+    {% for plot in plots %}
+        <div id="plot{{ loop.index }}" style="width:80%;height:500px;"></div>
+        <script>
+            var figure = {{ plot | safe }};
+            Plotly.newPlot('plot{{ loop.index }}', figure.data, figure.layout);
+        </script>
     {% endfor %}
-</script>
-
-<style>
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-        gap: 20px;
-    }
-    .chart {
-        background: #fff;
-        padding: 10px;
-        border: 1px solid #ddd;
-    }
-</style>
-{% endblock %}
+</body>
+</html>

@@ -18,12 +18,18 @@ def projects():
 @app.route("/dashboards")
 def dashboards():
     
-    # Load figures from disk
-    fig1 = pio.read_json("static/figures/diabetes_scatter.json")
-    fig2 = pio.read_json("static/figures/diabetes_hist.json")
-    fig3 = pio.read_json("static/figures/diabetes_box.json")
-
-    charts = [fig1, fig2, fig3]
-    graphJSON = [json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder) for fig in charts]
-
-    return render_template("dashboards.html", plots=graphJSON)
+    # Read pre-saved JSON figures
+    figure_files = [
+        "static/figures/diabetes_scatter.json",
+        "static/figures/diabetes_hist.json",
+        "static/figures/diabetes_box.json"
+    ]
+    
+    charts = []
+    for f in figure_files:
+        # Read figure JSON as dict
+        fig_dict = json.load(open(f, 'r'))
+        # Serialize with Plotly encoder for browser
+        charts.append(json.dumps(fig_dict, cls=plotly.utils.PlotlyJSONEncoder))
+    
+    return render_template("dashboards.html", plots=charts)
