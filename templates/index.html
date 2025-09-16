@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
     <h2>Welcome!</h2>
-    <p>Hi, I’m Ben, a data professional with experience in the Biotech and Insuretech industries. This is my profile site.</p>
+    <p>
+    I’m Ben Wallner, a data professional with experience across biotech, insuretech, and academic research. 
+    My work spans from automating large-scale data pipelines at Genomics England, to developing predictive models 
+    for financial clients at Pebbles Financial Solutions, to applying deep learning in materials science research at 
+    University College London as well as in the field of cheminformatics at the University of Cambridge.
+    </p>
 
     <!-- Profile Image -->
     <img src="{{ url_for('static', filename='images/profile.jpg') }}" 
-        alt="Profile Picture" 
-        class="profile-img">
+     alt="Profile Picture" 
+     class="profile-img">
 {% endblock %}

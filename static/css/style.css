@@ -22,8 +22,9 @@ main {
 }
 
 .profile-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;   /* circular */
-    object-fit: cover;    /* ensures image is not stretched */
+    width: 150px;       /* adjust size (try 120px–180px) */
+    height: auto;       /* keeps proportions */
+    border-radius: 50%; /* makes it circular */
+    margin: 20px 0;     /* spacing */
+    display: block;
 }
