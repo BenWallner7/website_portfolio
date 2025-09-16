@@ -3,6 +3,7 @@ from markupsafe import Markup
 import plotly.express as px
 import plotly
 import json
+import plotly.io as pio
 
 app = Flask(__name__)
 
@@ -16,17 +17,12 @@ def projects():
 
 @app.route("/dashboards")
 def dashboards():
-    # Example datasets
-    df = px.data.gapminder().query("country=='Canada'")
-    df2 = px.data.iris()
+    
+    # Load figures from disk
+    fig1 = pio.read_json("static/figures/diabetes_scatter.json")
+    fig2 = pio.read_json("static/figures/diabetes_hist.json")
+    fig3 = pio.read_json("static/figures/diabetes_box.json")
 
-    # Charts
-    fig1 = px.line(df, x="year", y="lifeExp", title="Life Expectancy in Canada")
-    fig2 = px.bar(df, x="year", y="pop", title="Population in Canada")
-    fig3 = px.scatter(df2, x="sepal_width", y="sepal_length", color="species",
-                      title="Iris Flower Dataset")
-
-    # Convert to JSON
     charts = [fig1, fig2, fig3]
     graphJSON = [json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder) for fig in charts]
 
