@@ -17,6 +17,8 @@ def projects():
 
 @app.route("/dashboards")
 def dashboards():
+    
+    # Read pre-saved JSON figures
     figure_files = [
         "static/figures/diabetes_scatter.json",
         "static/figures/diabetes_hist.json",
@@ -25,9 +27,9 @@ def dashboards():
     
     charts = []
     for f in figure_files:
-        with open(f, "r") as infile:
-            fig_dict = json.load(infile)
-            # No need for PlotlyJSONEncoder here
-            charts.append(fig_dict)
+        # Read figure JSON as dict
+        fig_dict = json.load(open(f, 'r'))
+        # Serialize with Plotly encoder for browser
+        charts.append(json.dumps(fig_dict, cls=plotly.utils.PlotlyJSONEncoder))
     
     return render_template("dashboards.html", plots=charts)
