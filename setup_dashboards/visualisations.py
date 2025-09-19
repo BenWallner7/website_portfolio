@@ -20,16 +20,19 @@ df_diabetes = pd.read_csv(diabetes_url)
 scatter_fig = px.scatter(df_diabetes, x="Glucose", y="BMI", color="Outcome",
                          title="Glucose vs BMI by Diabetes Outcome")
 pio.write_json(scatter_fig, "static/figures/diabetes_scatter.json")
+scatter_fig.write_image("static/figures/diabetes_scatter.jpeg", width=800, height=600)
 
 # Histogram
 hist_fig = px.histogram(df_diabetes, x="Age", color="Outcome", barmode="overlay",
                         title="Age Distribution by Diabetes Outcome")
 pio.write_json(hist_fig, "static/figures/diabetes_hist.json")
+hist_fig.write_image("static/figures/diabetes_hist.jpeg", width=800, height=600)
 
 # Box plot
 box_fig = px.box(df_diabetes, x="Outcome", y="BloodPressure",
                  title="Blood Pressure by Diabetes Outcome")
 pio.write_json(box_fig, "static/figures/diabetes_box.json")
+box_fig.write_image("static/figures/diabetes_box.jpeg", width=800, height=600)
 
 # Heart Disease Dashboard
 
