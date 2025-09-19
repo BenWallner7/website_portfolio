@@ -34,6 +34,13 @@ box_fig = px.box(df_diabetes, x="Outcome", y="BloodPressure",
 pio.write_json(box_fig, "static/figures/diabetes_box.json")
 box_fig.write_image("static/figures/diabetes_box.jpeg", width=800, height=600)
 
+figures = {
+    "scatter": scatter_fig,
+    "histogram": hist_fig,
+    "box": box_fig
+}
+
+
 # Heart Disease Dashboard
 
 # heart_url = "https://raw.githubusercontent.com/plotly/datasets/master/heart.csv"
