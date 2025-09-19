@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 import os
-import kagglehub
+# import kagglehub
 
 # Download datasets
 # kagglehub.dataset_download('arezaei81/heartcsv', path='setup_dashboards/heart', force_download=True)
