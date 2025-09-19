@@ -10,7 +10,7 @@
     {% for plot in plots %}
         <div id="plot{{ loop.index }}" style="width:80%;height:500px;"></div>
         <script>
-            var figure = {{ plot | safe }};
+            var figure = {{ plot | tojson }};
             Plotly.newPlot('plot{{ loop.index }}', figure.data, figure.layout);
         </script>
     {% endfor %}
