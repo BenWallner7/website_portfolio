@@ -26,6 +26,9 @@ def dashboards():
         charts.append(fig.to_dict())
     return render_template("dashboards.html", plots=charts)
 
+# if __name__ == "__main__":
+#     app.run(debug=True)
+    
 # @app.route("/dashboards")
 # def dashboards():
     
